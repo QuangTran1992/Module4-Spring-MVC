@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" name="" id="month" />
+    <button onclick="calDay()">Tinh so ngay</button>
+    <p id="demo"></p>
+    <script>
+      function calDay() {
+        let month = document.getElementById("month").value;
+        let stringOut;
+        switch (parseInt(month)) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            stringOut = " co 31 ngay";
+            break;
+          case 2:
+            stringOut = "  co 28 hoac 29 ngay";
+            break;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            stringOut = "  co 30 ngay";
+            break;
+        }
+        document.getElementById("demo").innerHTML = " Thang  " + stringOut;
+      }
+    </script>
+  </body>
+</html>
