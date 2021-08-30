@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-6">
+        <h3>Insert data</h3>
+        <form method="POST" id="insert_data">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Input Name" id="name"/>
+        <label>Phone</label>
+        <input type="text" class="form-control" placeholder="Input Phone" id="phone" />
+        <label>Address</label>
+        <input type="text" class="form-control" placeholder="Input Address" id="address" />
+        <label>Email</label>
+        <input type="text" class="form-control" placeholder="Input Email" id="email"/>
+        <label>Note</label>
+        <input type="text" class="form-control" placeholder="Input Note" id="note"/>
+        <br />
+
+        <input type="button" class="btn btn-primary" value="Insert" id="button-insert" />
+      </div>
+    </div>
+  </form>
+
+    <script class="text/javascript">
+  $('#button-insert').on('click' , function(){
+    var name = $('#name').val();
+    var phone = $('#phone').val();
+    var address = $('#address').val();
+    var email = $('#email').val();
+    var note = $('#note').val();
+
+    if(name == "" || phone == '' || address == '' || email == '' || note == ''){
+      alert("please input again");
+    }else{
+        $
+    }
+    
+
+    
+  });
+    
+    </script>
+  </body>
+</html>

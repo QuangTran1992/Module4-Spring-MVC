@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="jquery.validate.min.js"></script> -->
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <div class="h1">Product Management</div>
+        <div class="card border-success">
+          <div class="card-header">Add new product</div>
+          <div class="card-body">
+      
+              <div class="form-row align-items-center">
+                <div class="col-sm-4 my-1">
+                  <label class="sr-only" for="inlineFormInputName">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name" name="name"
+                    placeholder="Product Name"
+                  />
+                </div>
+                <div class="col-sm-4 my-1">
+                  <label class="sr-only" for="inlineFormInputGroupUsername"
+                    >Username</label
+                  >
+                  <div class="input-group col-sm-12">
+                    <select class="custom-select mr-sm-2" id="brand">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-2 my-1">
+                  <a
+                    href="javascript:;"
+                    class="btn col-sm-12 btn-outline-primary"
+                    id="submit" onclick="addProduct()"
+                  >
+                    Add
+                  </a>
+                  <button
+                    type="button"
+                    class="btn col-sm-12 btn-outline-primary d-none"
+                    id="update" 
+                  >
+                    Update
+                  </button>
+                </div>
+
+                <div class="col-sm-2 my-1">
+                  <button type="button" disabled class="btn col-sm-12 btn-outline-secondary" id="cancel" onclick="cancel()">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+          
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class="h2">Display All Product</div>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <script>
+
+
+      </script>
+
+    
+    <script src="jquery.js"></script>
+  </body>
+</html>

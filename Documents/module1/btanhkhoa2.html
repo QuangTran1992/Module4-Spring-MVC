@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var array_Clone = function (arra1) {
+      //   return arra1.slice(1);
+      // };
+      // document.write(array_Clone([1, 5, 4, 0]) + "<br>");
+      // document.write(array_Clone([1, 2, [4, 0]]));
+
+      // let array = [2, 4, 6, 8, 5];
+      // let aray_clone = array.slice(2);
+
+      // console.log(aray_clone);
+      function array_Clone(arr) {
+        return arr.slice(1);
+      }
+
+      let array = [1, 3, 5, 6, 7, 8];
+
+      let x = array_Clone(array);
+      document.write(x);
+    </script>
+  </body>
+</html>
