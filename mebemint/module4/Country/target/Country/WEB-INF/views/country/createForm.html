@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="frm-create">
+    <form id="frmCreateCountry">
+        <div>
+            <input type="button" id="buttonLoadCountries" value="Load Country" class="btn btn-primary">
+
+        </div>
+        <div>
+            <select  id="dropDownCountries" class="form-control">
+                <option value="">Japan</option>
+                <option value="">USA</option>
+                <option value="">England</option>
+            </select>
+
+        </div>
+        <div>
+            <lable>Country Name :</lable>
+            <input type="text" id="countryName">
+        </div>
+        <br>
+        <div>
+            <input type="button" value="Add" id="buttonAdd" class="btn btn-primary">
+            <input type="button" value="Update" id="buttonUpdate" class="btn btn-primary">
+<!--            <input type="button" value="Delete" id="buttonDelete" class="btn btn-primary">-->
+        </div>
+
+    </form>
+</th:block>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Country management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/sweetalert2.min.css">
+    <script type="text/javascript" src="/resource/js/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="/resource/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/resource/js/jquery.validate-1.19.3.min.js"></script>
+    <script type="text/javascript" src="/resource/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/resource/css/style.css">
+    <script type="text/javascript" src="/resource/js/app.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="success-alert">
+
+    </div>
+    <div class="box-header">
+        <th:block th:replace="/country/createForm :: frm-create"></th:block>
+    </div>
+    <div class="box-body">
+            <textarea style="display:none" id="template">
+                <tr id="tr_{0}">
+                    <td>{0}</td>
+                    <td><a href="/customer?action=view&id={0}">{1}</a></td>
+                    <td>{2}</td>
+                    <td>{3}</td>
+                    <td>{4}</td>
+                    <td>
+                        <a class="edit" data-id="{0}">
+                            <i class="fa fa-pencil-square-o fa-fw"></i>
+                            edit
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger delete" data-id="{0}">
+                            <i class="fa fa-trash-o"></i>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </textarea>
+        <input type="hidden" id="currentRow"/>
+        <table id="orderItems" class="table table-hover" border="1">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Country</th>
+                <th>Action</th>
+
+                <th>State</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<th:block th:replace="/country/updateForm :: frm-update"></th:block>
+
+
+<script>
+    let contextPath = "http://localhost:8080/api/";
+
+
+
+    function showlist(){
+        $.ajax({
+            type: "GET",
+            url : contextPath + "countries/list",
+        }).done((data) => {
+            // console.log(data);
+            $.each(data, (index, item) => {
+                $("#orderItems tbody").append(`
+                    <tr id="tr_${item.id}">
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td><a href="${item.id}" type="button" id="buttonDelete" class="btn btn-primary">Delete</a></td>
+<!--                        <td><a type="button" value="Delete" id="buttonDelete" class="btn btn-primary"></td>-->
+                    </tr>
+                `);
+            });
+
+        }).fail(function () {
+            alert("Error");
+        })
+
+    }
+
+    function addCountry(){
+        urls = contextPath + "/countries/save";
+        // countryName = $("#dropDownCountries option:selected").text();
+         countryName = $("#countryName").val();
+
+        jsonData = {name : countryName};
+
+        $.ajax({
+            type: "POST",
+            url: urls,
+            data: JSON.stringify(jsonData),
+            contentType: 'application/json'
+        }).done(function (data){
+            $("#orderItems tbody").prepend(`
+                    <tr id="tr_${data.id}">
+                        <td>${data.id}</td>
+                        <td>${data.name}</td>
+                        <td><a href="${data.id}" type="button" id="buttonDelete" class="btn btn-primary">Delete</a></td>
+<!--                        <td><input type="button" value="Delete" id="buttonDelete" class="btn btn-primary"></td>-->
+                    </tr>
+            `);
+            $("#countryName").val("");
+        }).fail("failed")
+
+    }
+    function  deleteCountry(){
+        let c = $(this);
+        let countryId = c.attr("href");
+        console.log(countryId);
+        $.ajax({
+            type: "DELETE",
+            url: contextPath + `/countries/delete/${countryId}`,
+
+            success : function (data) {
+                c.parent().parent().remove();
+            }
+        });
+    }
+
+
+
+    // var buttonDelete;
+    var buttonAdd;
+    $(document).ready(function (){
+        showlist();
+
+        // buttonAdd = $("#buttonAdd");
+        // buttonAdd.click(function (){
+        //       addCountry();
+        // });
+
+        $("#buttonAdd").on("click", () => {
+            addCountry();
+        });
+
+        $("#orderItems").on("click", "#buttonDelete",   function(e){
+            e.preventDefault();
+            deleteCountry();
+        });
+
+
+
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -34,6 +36,13 @@ public class Customer {
     private String Email;
 
     @Column(name = "c_Salary")
-    @NotEmpty(message = "khong duoc bo trong")
-    private String Salary;
+    @Min(value = 0, message = "must be greater than 0")
+    private BigDecimal Salary;
+
+    public Customer(String name, String phone, String email, BigDecimal salary) {
+        Name = name;
+        Phone = phone;
+        Email = email;
+        Salary = salary;
+    }
 }

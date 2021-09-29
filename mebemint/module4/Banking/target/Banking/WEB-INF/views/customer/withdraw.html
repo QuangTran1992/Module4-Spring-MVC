@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css ">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<h1>Create customer</h1>
+<p>
+    <a th:href="@{/customers}">Customer list</a>
+</p>
+<th:block th:if="${success}">
+    <p th:text="${success}"></p>
+</th:block>
+<div class="container">
+    <form th:object="${customer}" method="post" class="mr-3">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group col-6">
+            <label>Name: </label>
+            <input type="text" th:field="*{name}" class="form-control"  placeholder="Enter name">
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </div>
+        <div class="form-group col-6">
+            <label>Phone: </label>
+            <input type="number" th:field="*{phone}" class="form-control"  placeholder="Enter Phone">
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
+        </div>
+
+
+        <div class="form-group col-6">
+            <label>Email : </label>
+            <input type="text" th:field="*{email}" class="form-control"  placeholder="Enter Email">
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+
+        </div>
+
+        <div class="form-group col-6">
+            <label>Salary After WithDraw: </label>
+            <input type="number" disabled th:field="*{salary}" class="form-control"  placeholder="Enter Salary">
+        </div>
+        <div class="form-group col-6">
+            <label>Salary After WithDraw: </label>
+            <input type="number" th:value="0" name="salary" class="form-control"  placeholder="Enter Salary">
+            <input type="hidden" th:field="*{salary}">
+            <td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Salary Error</td>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

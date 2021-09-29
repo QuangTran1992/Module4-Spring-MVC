@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <div class="card border-success mt-3">
+        <div class="card-header " style="background: cadetblue">Add Order</div>
+        <div class="card-body">
+            <form class="form-create needs-validation" th:object="${orders}" method="post">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">Address :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:name="address" th:field="*{address}"  id="address" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">Customer Name :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" th:field="*{customerName}" id="customerName" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">DeliverFee:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="deliverfee" th:field="*{deliverFee}" id="deliverFee">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">Message:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="message" name="message" th:field="*{message}" rows="4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">Phone Number:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" th:name="phone" th:field="*{phone}" id="phoneNumber" >
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="col-sm-2 col-form-label">Product Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:name="productname" th:field="*{product}" id="productName">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-sm-2 col-form-label">Product Price:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="productprice" th:field="*{productPrice}" id="productprice">
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" name="total" th:field="*{total}" id="total">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-form-label">Shop Id:</label>
+                        <div class="col-sm-10">
+
+                            <input type="text" class="form-control" name="shopId" th:field="*{shop.id}" id="shopId" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-2">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-outline-secondary offset-md-6 col-6">Add New Order</button>
+                    </div>
+                    <div class="col-4">
+                        <a href="/shops" type="submit" class="btn btn-outline-secondary col-6">Exit</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="/resource/js/shop-validate.js"></script>
+
+</body>
+</html>

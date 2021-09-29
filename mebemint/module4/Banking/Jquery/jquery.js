@@ -58,6 +58,7 @@ function addProduct() {
     product = new Product(name, brand);
     productList.push(product);
     cleardata();
+
     $(".table tbody").append(`
                 <tr>
                     <th scope="row">${productList.length}</th>
@@ -74,6 +75,7 @@ function addProduct() {
   }
 }
 function remove(index) {
+  let a = $(this);
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -84,8 +86,9 @@ function remove(index) {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("Deleted!", "Your file has been deleted.", "success");
       productList.splice(index, 1);
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      $(this).parent().parent().remove();
     }
   });
 }
@@ -119,6 +122,7 @@ function cancel() {
 
 function cleardata() {
   document.getElementById("name").value = "";
+  document.getElementById("brand").value = "";
 }
 
 $(document).ready(function () {

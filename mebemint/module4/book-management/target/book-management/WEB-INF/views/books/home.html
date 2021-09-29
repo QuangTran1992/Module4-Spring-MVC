@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="card text-white text-center" style="background-color:#676a6c">
+        <div class="card-body row justify-content-between mt-2">
+            <div class="col-4 h2">Danh sách sach</div>
+            <div class="col-4">
+                <a href="/books/create" class="col-8 text-white btn btn-primary">Them Sach</a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped text-center mt-2 border-danger">
+        <thead class="text-white" style="background-color:#676a6c">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ma Sach</th>
+            <th scope="col">Nhom Sach</th>
+            <th scope="col">Ten Sach</th>
+            <th scope="col">Tac Gia</th>
+            <th scope="col">Nha Xuat Ban</th>
+            <th scope="col">Nam Xuat Ban</th>
+            <th scope="col">SL Xuat Ban</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="book : ${books}">
+            <tr>
+                <th scope="row" th:text="${book.getId()}"></th>
+                <th scope="row" th:text="${book.getGroup()}"></th>
+                <th scope="row" th:text="${book.getTenSach()}"></th>
+                <th scope="row" th:text="${book.getTacGia()}"></th>
+                <th scope="row" th:text="${book.getNhaXuatBan()}"></th>
+                <th scope="row" th:text="${book.getNamXuatBan()}"></th>
+                <th scope="row" th:text="${book.getSoLuongXuatBan()}"></th>
+
+                <td>
+                    <a th:href="@{/books/edit/__${book.getId()}__}"><i class="far fa-edit"></i></a>
+                    <span>&nbsp;|&nbsp;</span>
+                    <a th:href="@{/books/delete/__${book.getId()}__}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+</body>
+
+</html>

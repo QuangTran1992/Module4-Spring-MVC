@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css ">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 </head>
 <body>
 <a href="/create-customer">Create new Customer</a>
 <h1>Customer</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Salary</th>
-    </tr>
+<div class="container">
+    <table class="table table table-striped"  >
+        <tr class="text-center table-active">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th >Salary</th>
+            <th>Deposit</th>
+            <th>WithDraw</th>
+            <th>Action</th>
 
-        <tr>
+        </tr >
+        <th:block th:each="customer : ${customers}">
+            <tr class="text-center ">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td th:text="${customer.email}"></td>
+                <!--            <td th:text="${customer.salary}"></td>-->
 
-        </tr>
-    </th:block>
-</table>
+                <td class="text-right"><span th:text="${#numbers.formatDecimal(customer.salary, 0, 'COMMA', 2, 'POINT')}">10.00</span> $</td>
+                <td><a th:href="@{/deposit-customer/__${customer.id}__ }"><i title="Deposit"  style="color: cadetblue" class="far fa-plus-square fa-2x"></i></a>
+                <td><a th:href="@{/withdraw-customer/__${customer.id}__ }"><i title="WithDraw"  style="color: cadetblue" class="far fa-minus-square"></i></a>
+
+                <td><a th:href="@{/edit-customer/__${customer.id}__ }"><i title="Edit"  style="color: cadetblue" class="fas fa-edit fa-2x "></i></a>
+                <a th:href="@{/delete-customer/__${customer.id}__ }"><i title="Delete" class="fas fa-trash-alt fa-2x"></i></a>
+                </td>
+
+            </tr>
+        </th:block>
+
+    </table>
+
+</div>
+
 </body>
 </html>

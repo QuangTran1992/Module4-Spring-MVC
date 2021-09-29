@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Order</title>
+
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+
+</head>
+<body>
+<div class="container">
+
+    <div class="card border-success mt-3">
+        <div class="card-header bg-success h4 text-white">Edit Order</div>
+        <div class="card-body">
+            <form class="form-edit need-validate" th:object="${order}" method="post">
+                <input th:type="hidden" th:field="*{id}">
+                <input  th:type="hidden" th:field="*{shop.id}">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Order Information:</label>
+                    <div class="col-sm-10">
+                        <label class="col-sm-2 col-form-label">Customer Name:</label>
+                        <input type="text" class="form-control" id="nameUp" th:field="*{customerName}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">productPrice:</label>
+                    <div class="col-sm-10">
+                        <td class="text-right"><span th:text="${#numbers.formatDecimal(order.productPrice, 0, 'COMMA', 1, 'POINT')}">10.00</span> VND</td>
+                        <input type="text" class="form-control" id="areaUp" th:field="*{productPrice}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Address:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="address" th:field="*{address}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">DeliverFee:</label>
+                    <div class="col-sm-10">
+
+                        <input type="text" class="form-control" id="deliverFee" th:field="*{deliverFee}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Phone :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="introUp" rows="4" th:field="*{phone}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Product :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="product" rows="4" th:field="*{product}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Status :</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="status" rows="4" th:field="*{status}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">createDay :</label>
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" id="createDay" rows="4" th:field="*{createDay}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"> total:</label>
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" id="total" rows="4" th:field="*{total}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">deliverAt :</label>
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" id="deliverAt" rows="4" th:field="*{deliverAt}">
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">message :</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="message" rows="4" th:field="*{message}"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-outline-primary offset-md-6 col-6">Edit</button>
+                    </div>
+                    <div class="col-4">
+                        <a href="/shops" class="btn btn-outline-secondary col-6">Exit</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/resources/js/order-validate.js"></script>
+
+</body>
+</html>

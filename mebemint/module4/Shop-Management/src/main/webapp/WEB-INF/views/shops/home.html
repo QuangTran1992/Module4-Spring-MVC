@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders List</title>
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <style>
+        .alert-danger{
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="card text-white text-center" style="background-color:#676a6c">
+        <div class="card-body row justify-content-between mt-2">
+
+            <div class="col-4">
+                <a href="/shops/create" class="col-8 text-white btn btn-info">Add Order</a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped text-center mt-2 border-danger">
+        <thead  >
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name Shop</th>
+
+            <th scope="col">Id Order</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Status</th>
+
+            <th scope="col">Address</th>
+            <th scope="col">deliverAt</th>
+            <th scope="col">Product</th>
+            <th scope="col">Message</th>
+            <th scope="col">Total</th>
+
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="order : ${orders}">
+            <tr>
+                <td th:text="${order.getId()}"></td>
+                <td th:text="${order.getShopName()}"></td>
+
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.getCustomerName()}"></td>
+
+                <td class="badge badge-primary" th:text="${order.getStatus()}"></td>
+
+
+                <td th:text="${order.getAddress()}"></td>
+
+                <td th:text="${order.getDeliverAt()}"></td>
+                <td th:text="${order.getProduct()}"></td>
+                <td th:text="${order.getMessage()}"></td>
+
+                <td class="text-right"><span th:text="${#numbers.formatDecimal(order.total, 0, 'COMMA', 1, 'POINT')}">10.00</span> VND</td>
+
+
+                <td>
+                    <a th:href="@{/shops/edit/__${order.getId()}__}"><i class="far fa-edit"></i></a>
+                    <span>&nbsp;|&nbsp;</span>
+                    <a th:href="@{/shops/delete/__${order.getId()}__}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+</div>
+
+<th:block th:if="${success}">
+    <div class="alert-success">
+            <strong th:text="${success}"></strong>
+    </div>
+</th:block>
+<th:block th:if="${error}">
+    <div class="alert-danger">
+            <strong th:text="${error}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+
+    </div>
+</th:block>
+
+</div>
+<script>
+    $(".alert-success").fadeOut(4000);
+    $(".alert-danger").fadeIn();
+    $(".close").click(function (){
+        $(".alert-danger").fadeOut();
+    })
+</script>
+</body>
+<div>
+    <script src="/resource/js/jquery-3.6.0.min.js"></script>
+</div>
+</html>
